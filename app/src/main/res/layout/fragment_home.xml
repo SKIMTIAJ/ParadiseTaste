@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".fragments.home_fragments.HomeFragment">
+
+    <LinearLayout
+        android:id="@+id/homeTopLinearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:layout_marginStart="@dimen/_25sdp"
+        android:layout_marginEnd="@dimen/_20sdp"
+        android:orientation="horizontal"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <TextView
+            android:id="@+id/textViewHome"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="3"
+            android:text="@string/home"
+            android:textSize="@dimen/_25ssp"
+            android:fontFamily="@font/myfont"
+            android:textColor="@color/accent"/>
+
+        <ImageView
+            android:id="@+id/home_image_search"
+            android:layout_width="@dimen/_30sdp"
+            android:layout_height="match_parent"
+            android:src="@drawable/ic_search"/>
+
+    </LinearLayout>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:fillViewport="true"
+        app:layout_constraintTop_toBottomOf="@+id/homeTopLinearLayout"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/home_random_food_textCaption"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/what_would_you_like_to_eat"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_17ssp"
+                android:textStyle="bold"
+                android:fontFamily="@font/myfont"
+                android:layout_marginStart="@dimen/_25sdp"
+                android:layout_marginTop="@dimen/_10sdp"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"/>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/home_random_food_card"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_150sdp"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:layout_marginStart="@dimen/_25sdp"
+                android:layout_marginEnd="@dimen/_25sdp"
+                app:cardCornerRadius="@dimen/_10sdp"
+                app:cardElevation="@dimen/_4sdp"
+                app:cardUseCompatPadding="true"
+                app:layout_constraintTop_toBottomOf="@+id/home_random_food_textCaption"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent">
+
+                <ImageView
+                    android:id="@+id/home_random_food_image"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:src="@color/accent"
+                    android:scaleType="centerCrop"/>
+
+                <ProgressBar
+                    android:id="@+id/randomImageProgressBar"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:visibility="gone"
+                    android:layout_gravity="center"/>
+
+            </androidx.cardview.widget.CardView>
+
+
+            <TextView
+                android:id="@+id/home_popular_item_caption"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/over_popular_item"
+                android:textStyle="bold"
+                android:textSize="@dimen/_17ssp"
+                android:textColor="@color/black"
+                android:fontFamily="@font/myfont"
+                android:layout_marginTop="@dimen/_10sdp"
+                app:layout_constraintTop_toBottomOf="@+id/home_random_food_card"
+                app:layout_constraintLeft_toLeftOf="@+id/home_random_food_card"/>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/home_popular_item_recyclerView"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_95sdp"
+                android:layout_marginStart="@dimen/_25sdp"
+                android:layout_marginEnd="@dimen/_10sdp"
+                app:layout_constraintTop_toBottomOf="@+id/home_popular_item_caption"
+                app:layout_constraintStart_toStartOf="parent"/>
+
+            <ProgressBar
+                android:id="@+id/homePopularFoodProgressBar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:visibility="gone"
+                android:layout_gravity="center"
+                app:layout_constraintTop_toTopOf="@+id/home_popular_item_recyclerView"
+                app:layout_constraintBottom_toBottomOf="@+id/home_popular_item_recyclerView"
+                app:layout_constraintLeft_toLeftOf="@+id/home_popular_item_recyclerView"
+                app:layout_constraintRight_toRightOf="@+id/home_popular_item_recyclerView"/>
+
+            <TextView
+                android:id="@+id/home_categories_item_caption"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Category"
+                android:textStyle="bold"
+                android:textSize="@dimen/_17ssp"
+                android:textColor="@color/black"
+                android:fontFamily="@font/myfont"
+                android:layout_marginTop="@dimen/_10sdp"
+                app:layout_constraintTop_toBottomOf="@+id/home_popular_item_recyclerView"
+                app:layout_constraintLeft_toLeftOf="@+id/home_popular_item_recyclerView"/>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/home_category_item_recyclerView_card"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_15sdp"
+                android:layout_marginEnd="@dimen/_15sdp"
+                android:layout_marginBottom="@dimen/_5sdp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/home_categories_item_caption"
+                app:layout_constraintBottom_toBottomOf="parent">
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/home_category_item_recyclerView"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scrollbars="none"/>
+
+                <ProgressBar
+                    android:id="@+id/homeCategoryProgressBar"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:visibility="visible"
+                    android:layout_gravity="center"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"/>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
